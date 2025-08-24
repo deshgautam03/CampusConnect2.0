@@ -7,8 +7,8 @@ const createTransporter = () => {
     port: process.env.EMAIL_PORT,
     secure: false,
     auth: {
-      user: process.env.EMAIL_USER||"deshgautam05@gmail.com",
-      pass: process.env.EMAIL_PASS ||"wada ngtn mxzi sqzo"
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS 
     }
   });
 };
