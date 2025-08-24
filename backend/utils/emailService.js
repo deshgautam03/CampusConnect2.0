@@ -7,8 +7,8 @@ const createTransporter = () => {
     port: process.env.EMAIL_PORT,
     secure: false,
     auth: {
-      user: "deshgautam05@gmail.com",
-      pass: "wada ngtn mxzi sqzo"
+      user: process.env.EMAIL_USER||"deshgautam05@gmail.com",
+      pass: process.env.EMAIL_PASS ||"wada ngtn mxzi sqzo"
     }
   });
 };
@@ -19,15 +19,15 @@ const sendEventNotification = async (event) => {
     // In a real application, you would get this list from faculty coordinator
     // For demo purposes, we'll use a sample list
     const studentEmails = [
-      'xmnub567@gmail.com',
-      'deshgautam03@gmail.com',
-      'tanyaabrol12@gmail.com'
+      'deshgautam05@gmail.com',
+      'deshgautam06@gmail.com'
+      
     ];
 
     const transporter = createTransporter();
 
     const mailOptions = {
-      from:"deshgautam05@gmail.com",
+      from:process.env.EMAIL_USER,
       subject: `New Event: ${event.title}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
