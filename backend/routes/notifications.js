@@ -6,7 +6,7 @@ const { auth, authorize } = require('../middleware/auth');
 // @route   GET /api/notifications
 // @desc    Get all notifications (Faculty only)
 // @access  Private (Faculty only)
-router.get('/', [auth, authorize('faculty')], async (req, res) => {
+router.get('https://campusconnect2-0.onrender.com/', [auth, authorize('faculty')], async (req, res) => {
   try {
     const notifications = await Notification.find()
       .populate('event', 'title')
@@ -23,7 +23,7 @@ router.get('/', [auth, authorize('faculty')], async (req, res) => {
 // @route   GET /api/notifications/:id
 // @desc    Get notification by ID (Faculty only)
 // @access  Private (Faculty only)
-router.get('/:id', [auth, authorize('faculty')], async (req, res) => {
+router.get('https://campusconnect2-0.onrender.com/:id', [auth, authorize('faculty')], async (req, res) => {
   try {
     const notification = await Notification.findById(req.params.id)
       .populate('event', 'title description startDate endDate venue')
@@ -46,7 +46,7 @@ router.get('/:id', [auth, authorize('faculty')], async (req, res) => {
 // @route   GET /api/notifications/event/:eventId
 // @desc    Get notifications for a specific event (Faculty/Coordinator)
 // @access  Private (Faculty/Coordinator)
-router.get('/event/:eventId', [auth, authorize('faculty', 'coordinator')], async (req, res) => {
+router.get('https://campusconnect2-0.onrender.com/event/:eventId', [auth, authorize('faculty', 'coordinator')], async (req, res) => {
   try {
     const { eventId } = req.params;
     
@@ -73,7 +73,7 @@ router.get('/event/:eventId', [auth, authorize('faculty', 'coordinator')], async
 // @route   GET /api/notifications/stats
 // @desc    Get notification statistics (Faculty only)
 // @access  Private (Faculty only)
-router.get('/stats', [auth, authorize('faculty')], async (req, res) => {
+router.get('https://campusconnect2-0.onrender.com/stats', [auth, authorize('faculty')], async (req, res) => {
   try {
     const stats = await Notification.aggregate([
       {

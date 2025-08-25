@@ -7,7 +7,7 @@ const Application = require('../models/Application');
 const Event = require('../models/Event');
 
 // Get all applications for an event (Faculty/Coordinator only)
-router.get('/event/:eventId', auth, authorize('faculty', 'coordinator'), async (req, res) => {
+router.get('https://campusconnect2-0.onrender.com/event/:eventId', auth, authorize('faculty', 'coordinator'), async (req, res) => {
   try {
     const applications = await Application.find({ event: req.params.eventId })
       .populate('student', 'name email phone department year studentId')
@@ -22,7 +22,7 @@ router.get('/event/:eventId', auth, authorize('faculty', 'coordinator'), async (
 });
 
 // Get student's applications
-router.get('/student/my-applications', auth, authorize('student'), async (req, res) => {
+router.get('https://campusconnect2-0.onrender.com/student/my-applications', auth, authorize('student'), async (req, res) => {
   try {
     const applications = await Application.find({ student: req.user.id })
       .populate('event', 'title startDate venue category')
@@ -36,7 +36,7 @@ router.get('/student/my-applications', auth, authorize('student'), async (req, r
 });
 
 // Submit application
-router.post('/', auth, authorize('student'), [
+router.post('https://campusconnect2-0.onrender.com/', auth, authorize('student'), [
   body('event', 'Event ID is required').not().isEmpty(),
   body('isTeamApplication', 'Team application flag is required').isBoolean()
 ], async (req, res) => {
@@ -113,7 +113,7 @@ router.post('/', auth, authorize('student'), [
 });
 
 // Update application status (Faculty/Coordinator only)
-router.put('/:id/status', auth, authorize('faculty', 'coordinator'), [
+router.put('https://campusconnect2-0.onrender.com/:id/status', auth, authorize('faculty', 'coordinator'), [
   body('status', 'Status is required').isIn(['pending', 'approved', 'rejected', 'withdrawn']),
   body('remarks', 'Remarks are optional').optional().isString()
 ], async (req, res) => {
@@ -152,7 +152,7 @@ router.put('/:id/status', auth, authorize('faculty', 'coordinator'), [
 });
 
 // Get application statistics (Faculty only)
-router.get('/stats', auth, authorize('faculty'), async (req, res) => {
+router.get('https://campusconnect2-0.onrender.com/stats', auth, authorize('faculty'), async (req, res) => {
   try {
     const stats = await Application.aggregate([
       {
