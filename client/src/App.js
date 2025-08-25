@@ -40,7 +40,7 @@ function App() {
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
+            <Route path="https://campusconnect2-0-2.onrender.com/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/faculty-login" element={<FacultyLogin />} />
             <Route path="/faculty-register" element={<FacultyRegister />} />
