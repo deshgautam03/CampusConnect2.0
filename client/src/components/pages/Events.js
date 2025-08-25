@@ -15,7 +15,7 @@ const Events = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get('/api/events');
+        const res = await axios.get('https://campusconnect2-0.onrender.com/api/events');
         setEvents(res.data);
         setFilteredEvents(res.data);
       } catch (error) {

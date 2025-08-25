@@ -13,8 +13,8 @@ const EventParticipants = () => {
     const fetchData = async () => {
       try {
         const [eventRes, applicationsRes] = await Promise.all([
-          axios.get(`/api/events/${id}`),
-          axios.get(`/api/applications/event/${id}`)
+          axios.get(`https://campusconnect2-0.onrender.com/api/events/${id}`),
+          axios.get(`https://campusconnect2-0.onrender.com/api/applications/event/${id}`)
         ]);
         setEvent(eventRes.data);
         setApplications(applicationsRes.data);

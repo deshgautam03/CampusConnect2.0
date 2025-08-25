@@ -8,7 +8,7 @@ const MyEvents = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get('/api/events/coordinator/my-events');
+        const res = await axios.get('https://campusconnect2-0.onrender.com/api/events/coordinator/my-events');
         setEvents(res.data);
       } catch (_) {}
       setLoading(false);

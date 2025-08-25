@@ -37,7 +37,7 @@ const CreateEvent = () => {
     if (image) data.append('image', image);
     try {
       setSubmitting(true);
-      await axios.post('/api/events', data, { headers: { 'Content-Type': 'multipart/form-data' } });
+      await axios.post('https://campusconnect2-0.onrender.com/api/events', data, { headers: { 'Content-Type': 'multipart/form-data' } });
       toast.success('Event created successfully!');
       setForm(defaultForm);
       setImage(null);

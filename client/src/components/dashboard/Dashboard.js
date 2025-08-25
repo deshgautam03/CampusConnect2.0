@@ -18,17 +18,17 @@ const Dashboard = () => {
         
         // Fetch stats and events based on user role
         if (user?.userType === 'faculty') {
-          const eventsResponse = await axios.get('/api/events');
+          const eventsResponse = await axios.get('https://campusconnect2-0.onrender.com/api/events');
           setRecentEvents(eventsResponse.data.slice(0, 5));
           
-          const statsResponse = await axios.get('/api/applications/stats', {
+          const statsResponse = await axios.get('https://campusconnect2-0.onrender.com/api/applications/stats', {
             headers: { Authorization: `Bearer ${token}` }
           });
           setStats(statsResponse.data);
         } else if (user?.userType === 'coordinator') {
           try {
             console.log('Fetching coordinator events for user:', user.id);
-            const myEventsResponse = await axios.get('/api/events/coordinator/my-events', {
+            const myEventsResponse = await axios.get('https://campusconnect2-0.onrender.com/api/events/coordinator/my-events', {
               headers: { Authorization: `Bearer ${token}` }
             });
             const events = myEventsResponse.data;
@@ -41,10 +41,10 @@ const Dashboard = () => {
             setStats({ totalEvents: 0 });
           }
         } else if (user?.userType === 'student') {
-          const eventsResponse = await axios.get('/api/events');
+          const eventsResponse = await axios.get('https://campusconnect2-0.onrender.com/api/events');
           setRecentEvents(eventsResponse.data.slice(0, 5));
           
-          const myApplicationsResponse = await axios.get('/api/applications/student/my-applications', {
+          const myApplicationsResponse = await axios.get('https://campusconnect2-0.onrender.com/api/applications/student/my-applications', {
             headers: { Authorization: `Bearer ${token}` }
           });
           setStats({ totalApplications: myApplicationsResponse.data.length });
