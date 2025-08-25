@@ -48,7 +48,7 @@ const sendEventNotification = async (event) => {
             </p>
           </div>
           <div style="text-align: center; margin-top: 30px;">
-            <a href="${process.env.CLIENT_URL || 'http://localhost:3000'}/events/${event._id}" 
+            <a href="${process.env.CLIENT_URL || 'http://:3000'}/events/${event._id}" 
                style="background-color: #3498db; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
               View Event Details
             </a>
