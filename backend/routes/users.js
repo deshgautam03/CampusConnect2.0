@@ -8,7 +8,7 @@ const User = require('../models/User');
 // @route   GET /api/users/profile
 // @desc    Get user profile
 // @access  Private
-router.get('https://campusconnect2-0-2.onrender.com/profile', auth, async (req, res) => {
+router.get('/profile', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
@@ -21,7 +21,7 @@ router.get('https://campusconnect2-0-2.onrender.com/profile', auth, async (req, 
 // @route   PUT /api/users/profile
 // @desc    Update user profile
 // @access  Private
-router.put('https://campusconnect2-0-2.onrender.com/profile', [
+router.put('/profile', [
   auth,
   body('name', 'Name is required').not().isEmpty(),
   body('phone', 'Phone number is required').not().isEmpty()
@@ -63,7 +63,7 @@ router.put('https://campusconnect2-0-2.onrender.com/profile', [
 // @route   PUT /api/users/change-password
 // @desc    Change user password
 // @access  Private
-router.put('https://campusconnect2-0-2.onrender.com/change-password', [
+router.put('/change-password', [
   auth,
   body('currentPassword', 'Current password is required').exists(),
   body('newPassword', 'New password must be at least 6 characters').isLength({ min: 6 })
@@ -95,7 +95,7 @@ router.put('https://campusconnect2-0-2.onrender.com/change-password', [
 });
 
 // Get all students
-router.get('https://campusconnect2-0-2.onrender.com/students', auth, authorize('faculty'), async (req, res) => {
+router.get('/students', auth, authorize('faculty'), async (req, res) => {
   try {
     const students = await User.find({ userType: 'student' }).select('-password');
     res.json(students);
@@ -105,7 +105,7 @@ router.get('https://campusconnect2-0-2.onrender.com/students', auth, authorize('
 });
 
 // Get all coordinators
-router.get('https://campusconnect2-0-2.onrender.com/coordinators', auth, authorize('faculty'), async (req, res) => {
+router.get('/coordinators', auth, authorize('faculty'), async (req, res) => {
   try {
     const coordinators = await User.find({ userType: 'coordinator' }).select('-password');
     res.json(coordinators);
@@ -116,7 +116,7 @@ router.get('https://campusconnect2-0-2.onrender.com/coordinators', auth, authori
 });
 
 // Update user status
-router.put('https://campusconnect2-0-2.onrender.com/:id/status', auth, authorize('faculty'), async (req, res) => {
+router.put('/:id/status', auth, authorize('faculty'), async (req, res) => {
   try {
     const { isActive } = req.body;
     const user = await User.findByIdAndUpdate(
@@ -137,7 +137,7 @@ router.put('https://campusconnect2-0-2.onrender.com/:id/status', auth, authorize
 });
 
 // Create faculty account (requires admin password)
-router.post('https://campusconnect2-0-2.onrender.com/faculty', [
+router.post('/faculty', [
   body('name', 'Name is required').not().isEmpty(),
   body('email', 'Please include a valid email').isEmail(),
   body('password', 'Password must be 6 or more characters').isLength({ min: 6 }),
