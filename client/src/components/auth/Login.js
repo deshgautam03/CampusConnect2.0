@@ -29,7 +29,7 @@ const Login = () => {
       
       if (result.success) {
         toast.success('Login successful!');
-        navigate('https://campusconnect2-0-2.onrender.com/dashboard');
+        navigate('/dashboard');
       } else {
         toast.error(result.message);
       }
