@@ -40,16 +40,16 @@ function App() {
           <Routes>
             {/* Public Routes */}
             <Route path="/" element={<Home />} />
-            <Route path="https://campusconnect2-0.onrender.com/login" element={<Login />} />
-            <Route path="https://campusconnect2-0.onrender.com/register" element={<Register />} />
-            <Route path="https://campusconnect2-0.onrender.com/faculty-login" element={<FacultyLogin />} />
-            <Route path="https://campusconnect2-0.onrender.com/faculty-register" element={<FacultyRegister />} />
-            <Route path="https://campusconnect2-0.onrender.com/events" element={<Events />} />
-            <Route path="https://campusconnect2-0.onrender.com/event/:id" element={<EventDetails />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/faculty-login" element={<FacultyLogin />} />
+            <Route path="/faculty-register" element={<FacultyRegister />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/event/:id" element={<EventDetails />} />
             
             {/* Protected Routes */}
             <Route 
-              path="https://campusconnect2-0.onrender.com/dashboard" 
+              path="/dashboard" 
               element={
                 <ProtectedRoute allowedRoles={['student', 'coordinator', 'faculty']}>
                   <Dashboard />
@@ -58,7 +58,7 @@ function App() {
             />
             
             <Route 
-              path="https://campusconnect2-0.onrender.com/apply/:id" 
+              path="/apply/:id" 
               element={
                 <ProtectedRoute allowedRoles={['student']}>
                   <ApplyForEvent />
@@ -67,7 +67,7 @@ function App() {
             />
 
             <Route 
-              path="https://campusconnect2-0.onrender.com/my-applications" 
+              path="/my-applications" 
               element={
                 <ProtectedRoute allowedRoles={['student']}>
                   <MyApplications />
@@ -76,7 +76,7 @@ function App() {
             />
 
             <Route 
-              path="https://campusconnect2-0.onrender.com/my-events" 
+              path="/my-events" 
               element={
                 <ProtectedRoute allowedRoles={['coordinator']}>
                   <MyEvents />
@@ -85,7 +85,7 @@ function App() {
             />
 
             <Route 
-              path="https://campusconnect2-0.onrender.com/create-event" 
+              path="/create-event" 
               element={
                 <ProtectedRoute allowedRoles={['coordinator']}>
                   <CreateEvent />
@@ -94,7 +94,7 @@ function App() {
             />
 
             <Route 
-              path="https://campusconnect2-0.onrender.com/edit-event/:id" 
+              path="/edit-event/:id" 
               element={
                 <ProtectedRoute allowedRoles={['coordinator']}>
                   <EditEvent />
@@ -103,7 +103,7 @@ function App() {
             />
 
             <Route 
-              path="https://campusconnect2-0.onrender.com/faculty/users" 
+              path="/faculty/users" 
               element={
                 <ProtectedRoute allowedRoles={['faculty']}>
                   <FacultyUserManagement />
@@ -112,7 +112,7 @@ function App() {
             />
 
             <Route 
-              path="https://campusconnect2-0.onrender.com/event-participants/:id" 
+              path="/event-participants/:id" 
               element={
                 <ProtectedRoute allowedRoles={['faculty']}>
                   <EventParticipants />
@@ -121,7 +121,7 @@ function App() {
             />
 
             <Route 
-              path="https://campusconnect2-0.onrender.com/profile" 
+              path="/profile" 
               element={
                 <ProtectedRoute allowedRoles={['student', 'coordinator', 'faculty']}>
                   <Profile />
@@ -130,7 +130,7 @@ function App() {
             />
             
             {/* Redirect any unknown routes to home */}
-            <Route path="*" element={<Navigate to="https://campusconnect2-0.onrender.com" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
         
