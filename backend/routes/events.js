@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Get all events
-router.get('/https://campusconnect2-0.onrender.com/', async (req, res) => {
+router.get('/https://campusconnect2-0-2.onrender.com/', async (req, res) => {
   try {
     const events = await Event.find({ isActive: true }).sort({ startDate: 1 });
     res.json(events);
@@ -32,7 +32,7 @@ router.get('/https://campusconnect2-0.onrender.com/', async (req, res) => {
 });
 
 // Get event by ID
-router.get('https://campusconnect2-0.onrender.com/:id', async (req, res) => {
+router.get('https://campusconnect2-0-2.onrender.com/:id', async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
     if (!event) {
@@ -46,7 +46,7 @@ router.get('https://campusconnect2-0.onrender.com/:id', async (req, res) => {
 });
 
 // Create new event
-router.post('/https://campusconnect2-0.onrender.com/', [
+router.post('/https://campusconnect2-0-2.onrender.com/', [
   auth,
   authorize('coordinator'),
   upload.single('image'),
@@ -98,7 +98,7 @@ router.post('/https://campusconnect2-0.onrender.com/', [
 });
 
 // Update event
-router.put('https://campusconnect2-0.onrender.com/:id', [
+router.put('https://campusconnect2-0-2.onrender.com/:id', [
   auth,
   authorize('coordinator'),
   body('title', 'Title is required').not().isEmpty(),
@@ -146,7 +146,7 @@ router.put('https://campusconnect2-0.onrender.com/:id', [
 });
 
 // Delete event
-router.delete('https://campusconnect2-0.onrender.com/:id', auth, authorize('coordinator'), async (req, res) => {
+router.delete('https://campusconnect2-0-2.onrender.com/:id', auth, authorize('coordinator'), async (req, res) => {
   try {
     const event = await Event.findById(req.params.id);
     if (!event) {
@@ -170,7 +170,7 @@ router.delete('https://campusconnect2-0.onrender.com/:id', auth, authorize('coor
 });
 
 // Get coordinator's events
-router.get('https://campusconnect2-0.onrender.com/coordinator/my-events', auth, authorize('coordinator'), async (req, res) => {
+router.get('https://campusconnect2-0-2.onrender.com/coordinator/my-events', auth, authorize('coordinator'), async (req, res) => {
   try {
     const events = await Event.find({ coordinator: req.user.id }).sort({ startDate: 1 });
     res.json(events);
